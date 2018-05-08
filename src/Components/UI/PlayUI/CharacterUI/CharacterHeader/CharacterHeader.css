@@ -1,0 +1,76 @@
+.CharacterHeader{
+  background-color: black;
+  color: white;
+  height: 6em;
+  padding: 6em 0 0 0;
+  display: grid;
+  grid-template-rows: 1fr 2em;
+}
+
+.CharacterHeader > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.CharacterName{
+  font-size: 1.25em;
+  padding: 0 1em;
+}
+
+.PlayerName{
+  display: block;
+  font-size: .75em;
+}
+
+
+.CharacterStressDetermination{
+  padding: 0 1em;
+  width: 135px;
+}
+
+.CharacterStressDetermination span{
+  display: inline-block;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.CharacterStress{
+  font-size: 1.25em;
+}
+
+.CharacterStress span{
+  width: 30px
+}
+
+.CharacterDetermination{
+  margin-top: 1em;
+  font-size: .75em;
+}
+
+.CharacterDetermination span {
+  width: 16px;
+}
+
+.CharacterFooter{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  background: black;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ShipName, .CharacterRank{
+  background: white;
+  font-size: 1em;
+  text-align: center;
+  padding: .5em .5em 0;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.CharacterRank{
+  width: 135px;
+}

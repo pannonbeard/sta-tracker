@@ -1,0 +1,28 @@
+.CharacterAbilityNav{
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+}
+
+.CharacterAbilityNav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.CharacterAbilityNav li {
+  text-align: center;
+  padding: 1em 0.75em;
+  box-sizing: border-box;
+
+}
+
+.CharacterAbilityNav li:active {
+  background: rgba(0,0,0,0.5);
+  color: white;
+}

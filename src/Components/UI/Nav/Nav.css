@@ -1,0 +1,22 @@
+.Nav{
+  width: calc(100% - 2em);
+  background: white;
+  text-align: left;
+  padding: 1em;
+  position: fixed;
+  box-sizing: content-box;
+  align-items: center;
+}
+
+.MenuBars{
+  height: 3em;
+  float: left;
+}
+
+.Portrate{
+  height: 3em;
+  width: 3em;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  float: right;
+}
