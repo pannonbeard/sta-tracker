@@ -30,7 +30,7 @@ class ShipPlayUI extends Component {
     }
     return (
       <div>
-        <ShipAbilityNav updateUI={this.handleChangeScreen}/>
+        <ShipAbilityNav updateUI={this.handleChangeScreen} active={this.state.currentScreen}/>
         {screen}
       </div>
     )
