@@ -4,7 +4,7 @@ import CharacterPlayUI from './Containers/Play/Character/CharacterPlayUI'
 
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import styles from './App.css';
+import styles from './App.scss';
 
 
 class App extends Component {
