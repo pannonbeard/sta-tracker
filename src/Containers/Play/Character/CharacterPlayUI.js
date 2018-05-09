@@ -47,7 +47,7 @@ class CharacterPlayUI extends Component {
 
     return (
       <Fragment> 
-        <PlayUI changeUI={this.handleChangeScreen}>
+        <PlayUI changeUI={this.handleChangeScreen} active={this.state.currentScreen}>
           {screen}
         </PlayUI>
       </Fragment>
