@@ -1,7 +1,16 @@
 import React from 'react'
 
-const characterEquipment = (props) => (
-  <div> Character Equipment </div>
-)
+import styles from './CharacterEquipment.scss'
+
+const characterEquipment = (props) => {
+  const mappedEquipment = props.equipment.map( equipt => (
+    <section>
+      <h1><span>{equipt.name}</span></h1>
+      <p className={styles.CharacterEquipmentDescription}>{equipt.description}</p>
+    </section>
+  ))
+
+  return mappedEquipment
+}
 
 export default characterEquipment
