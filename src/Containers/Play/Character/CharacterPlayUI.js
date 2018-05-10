@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 
-import { Route, Switch } from 'react-router-dom' 
-
 import CharacterBattle from './CharacterBattle/CharacterBattle'
 import CharacterEquipment from './CharacterEquipment/CharacterEquipment'
 import CharacterInfo from './CharacterInfo/CharacterInfo'
@@ -11,7 +9,7 @@ import ShipPlayUI from '../Ship/ShipPlayUI'
 
 class CharacterPlayUI extends Component {
   state = {
-    currentScreen: 'info'
+    currentScreen: 'battle'
   }
 
   handleChangeScreen = (screen) => {
@@ -26,6 +24,21 @@ class CharacterPlayUI extends Component {
       { name: 'Fourth Talent', description: 'Does something else cool' },
     ]
 
+    const weapons = [
+      { name_type: 'Phaser - blaster', action_dice: 3, qualities: 'great'},
+      { name_type: 'Phaser - blaster', action_dice: 3, qualities: 'great'}
+    ]
+
+    const injuries = [
+      { type: 'broken leg', qualities: 'hard to walk moves half as fast'},
+      { type: 'broken leg', qualities: 'hard to walk moves half as fast'},
+    ]
+
+    const equipment = [
+      { name: 'Something something', description: 'Yada yada blah blah'},
+      { name: 'Something something', description: 'Yada yada blah blah'},
+    ]
+
     let screen = <CharacterInfo />
 
     switch(this.state.currentScreen){
@@ -33,10 +46,10 @@ class CharacterPlayUI extends Component {
         screen = <CharacterTalents talents={talents}/>
         break
       case 'battle':
-        screen = <CharacterBattle />
+        screen = <CharacterBattle weapons={weapons} injuries={injuries}/>
         break
       case 'equipment':
-        screen = <CharacterEquipment />
+        screen = <CharacterEquipment equipment={equipment}/>
         break
       case 'ship':
         screen = <ShipPlayUI />
