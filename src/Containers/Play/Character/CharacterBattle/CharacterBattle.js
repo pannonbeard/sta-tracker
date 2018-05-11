@@ -1,35 +1,22 @@
 import React from 'react'
 import styles from './CharacterBattle.scss'
 
+import ItemField from '../../../../Components/UI/ItemField/ItemField'
+
 const characterBattle = (props) => {
 
   const mappedWeapons = props.weapons.map( (weapon, index) => (
     <div className={styles.weaponEntry} key={index}>
-      <div>
-        <span>Name/Type</span>
-        <span>{weapon.name_type}</span>
-      </div>
-      <div>
-        <span>A</span>
-        <span>{weapon.action_dice}</span>
-      </div>
-      <div className={styles.spanTwoColumns}>
-        <span>Qualities</span>
-        <span>{weapon.qualities}</span>
-      </div>
+      <ItemField label='Name/Type' value={weapon.name_type} />
+      <ItemField label='A' value={weapon.action_dice} />
+      <ItemField label='Qualities' value={weapon.qualities} extraClass={styles.spanTwoColumns}/>
     </div>
   ))
 
   const mappedInjuries = props.injuries.map( (injury, index) => (
     <div className={styles.Injury} key={index}>
-      <div>
-        <span>Type</span>
-        <span>{injury.type}</span>
-      </div>
-      <div>
-        <span>Qualities</span>
-        <span>{injury.qualities}</span>      
-      </div>
+      <ItemField label='Type' value={injury.type} />    
+      <ItemField label='Qualities' value={injury.qualities} />    
     </div>
   ))
 
