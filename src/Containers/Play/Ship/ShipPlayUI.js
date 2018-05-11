@@ -26,7 +26,7 @@ class ShipPlayUI extends Component {
         screen = <div>Stats</div>
         break
       default:
-        screen = <ShipGeneral />
+        screen = <ShipGeneral general={this.props.ship.general}/>
     }
     return (
       <div>
