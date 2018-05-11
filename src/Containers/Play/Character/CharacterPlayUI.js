@@ -9,7 +9,7 @@ import ShipPlayUI from '../Ship/ShipPlayUI'
 
 class CharacterPlayUI extends Component {
   state = {
-    currentScreen: 'battle'
+    currentScreen: 'ship'
   }
 
   handleChangeScreen = (screen) => {
@@ -39,6 +39,46 @@ class CharacterPlayUI extends Component {
       { name: 'Something something', description: 'Yada yada blah blah'},
     ]
 
+    const ship = {
+      general: {
+        registry_entry: {
+          service_date: '',
+          designation: '',
+          space_frame: '',
+          mission_profile: '',
+          refits: []
+        },
+        traits: [],
+        launch_bay: []
+      },
+      stats: {
+        systems: {
+          engines: 1,
+          computers: 1,
+          weapons: 1,
+          structure: 1,
+          sensors: 1,
+          coms: 1,
+          scale: 1,
+          resistance: 1
+        },
+        departments: {},
+        power: {
+          current: 1,
+          total: 1
+        },
+        crew_support: {
+          current: 1,
+          total: 1
+        }
+      },
+      talents: [],
+      battle: {
+        weapons: [],
+        sheilds: [1,1,1,1,0,0,0,0]
+      }
+    }
+
     let screen = <CharacterInfo />
 
     switch(this.state.currentScreen){
@@ -52,7 +92,7 @@ class CharacterPlayUI extends Component {
         screen = <CharacterEquipment equipment={equipment}/>
         break
       case 'ship':
-        screen = <ShipPlayUI />
+        screen = <ShipPlayUI ship={ship}/>
         break
       default:
         screen = <CharacterInfo />

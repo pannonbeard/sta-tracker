@@ -3,8 +3,8 @@ import styles from './CharacterBattle.scss'
 
 const characterBattle = (props) => {
 
-  const mappedWeapons = props.weapons.map( weapon => (
-    <div className={styles.weaponEntry}>
+  const mappedWeapons = props.weapons.map( (weapon, index) => (
+    <div className={styles.weaponEntry} key={index}>
       <div>
         <span>Name/Type</span>
         <span>{weapon.name_type}</span>
@@ -20,8 +20,8 @@ const characterBattle = (props) => {
     </div>
   ))
 
-  const mappedInjuries = props.injuries.map( injury => (
-    <div className={styles.Injury}>
+  const mappedInjuries = props.injuries.map( (injury, index) => (
+    <div className={styles.Injury} key={index}>
       <div>
         <span>Type</span>
         <span>{injury.type}</span>
