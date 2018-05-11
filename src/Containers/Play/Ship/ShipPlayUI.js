@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ShipAbilityNav from '../../../Components/UI/PlayUI/ShipUI/ShipAbilityNav/ShipAbilityNav'
 
 import ShipGeneral from './ShipGeneral/ShipGeneral'
+import ShipStats from './ShipStats/ShipStats'
+import ShipTalents from './ShipTalents/ShipTalents'
+import ShipBattle from './ShipBattle/ShipBattle'
 
 class ShipPlayUI extends Component {
   state = {
@@ -17,13 +20,13 @@ class ShipPlayUI extends Component {
 
     switch(this.state.currentScreen){
       case 'talents':
-        screen = <div>Talents</div>
+        screen = <ShipTalents />
         break
       case 'battle':
-        screen = <div>Battle</div>
+        screen = <ShipBattle />
         break
       case 'stats':
-        screen = <div>Stats</div>
+        screen = <ShipStats />
         break
       default:
         screen = <ShipGeneral general={this.props.ship.general}/>
