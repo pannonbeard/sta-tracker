@@ -1,0 +1,23 @@
+.ItemField{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    span{
+        box-sizing: border-box;
+        display: block;
+        padding: 0.35em;
+        border: 1px solid rgba(0,0,0,0.5);
+        
+        &:first-child{
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border-radius: 20px 0 0 20px;
+            margin-right: 5px;
+        }
+        &:last-child{
+            flex: 2;   
+            border-radius: 0 20px 20px 0;
+            align-self: stretch;
+        }
+    }
+}
