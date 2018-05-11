@@ -17,7 +17,6 @@ class Nav extends Component {
     this.setState({drawerOpen: false})
   }
 
-
   render() {
     return (
       <Fragment>
@@ -30,7 +29,7 @@ class Nav extends Component {
         <DrawerNav open={this.state.drawerOpen} clicked={this.closeDrawer}>
           <ul>
             <li>Characters</li>
-            <li>Campains</li>
+            <li>Campaigns</li>
             <li>Account</li>
             <li>Sign Out</li>
           </ul>
