@@ -1,45 +1,22 @@
 import React from 'react'
+import StatField from '../../../../Components/UI/StatField/StatField'
 
-import styles from './CharacterInfo.css'
+import styles from './CharacterInfo.css' 
 
 const characterInfo = (props) => {
-  const attributes = [
-    ['Control', 12],
-    ['Fitness', 12],
-    ['Presence', 12],
-    ['Daring', 12],
-    ['Insite', 12],
-    ['Reason', 12],
-  ]
+  const mappedAttributes = props.attributes.map( attr => (
+      <StatField 
+        key={attr[0]} 
+        label={attr[0]} 
+        value={attr[1]} />
+    ))
 
-  const disciplines = [
-    ['Command', 12],
-    ['Security', 12],
-    ['Science', 12],
-    ['Conn', 12],
-    ['Engineering', 12],
-    ['Medicine', 12],
-  ]
-
-  const mappedAttributes = attributes.map( attr => {
-    const shrinkText = attr[0].length > 8 
-      ? { fontSize: '.65em', paddingTop: '.75em' } 
-      : attr[0].length >= 6 
-        ? { fontSize: '.85em', paddingTop: '.45em' } : null
-    return (
-      <div key={attr[0]} className={styles.AtDisBubble}><span style={shrinkText}>{attr[0]}</span> <span>{attr[1]}</span></div>
-    )
-  })
-
-  const mappedDisciplines = disciplines.map( disc => {
-    const shrinkText = disc[0].length > 10 
-      ? { fontSize: '.65em', paddingTop: '.75em' } 
-      : disc[0].length > 5 
-        ? { fontSize: '.85em', paddingTop: '.45em' } : null
-    return (
-      <div key={disc[0]} className={styles.AtDisBubble}><span style={shrinkText}>{disc[0]}</span> <span>{disc[1]}</span></div>
-    )
-  })
+  const mappedDisciplines = props.disciplines.map( disc =>  (
+      <StatField 
+        key={disc[0]} 
+        label={disc[0]} 
+        value={disc[1]} />      
+    ))
 
   return(
     <div className={styles.CharacterInfo}>

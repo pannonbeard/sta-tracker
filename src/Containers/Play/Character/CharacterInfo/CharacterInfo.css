@@ -15,28 +15,3 @@
   padding: 0 .5em;
   grid-gap: 10px;
 }
-
-.AtDisBubble{
-  display: grid;
-  grid-template-columns: 1fr 35px;
-  grid-gap: 5px;
-  box-sizing: border-box;
-}
-
-.AtDisBubble span{
-  display: inline-block;
-  border: solid black 1px;
-  padding: .25em;
-  font-size: 1em;
-  align-items: center;
-}
-
-.AtDisBubble span:first-child{
-  border-radius: 20px 0 0 20px;
-  text-align: right;
-}
-
-.AtDisBubble span:last-child{
-  border-radius: 0 20px 20px 0;
-  text-align: left;
-}
