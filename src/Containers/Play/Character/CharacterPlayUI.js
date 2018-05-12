@@ -9,15 +9,8 @@ import ShipPlayUI from '../Ship/ShipPlayUI'
 
 class CharacterPlayUI extends Component {
   state = {
-    currentScreen: 'ship'
-  }
-
-  handleChangeScreen = (screen) => {
-    this.setState({currentScreen: screen})
-  }
-
-  render() {
-    const ship = {
+    currentScreen: 'ship',
+    ship: {
       general: {
         registry_entry: {
           service_date: '2280',
@@ -38,24 +31,24 @@ class CharacterPlayUI extends Component {
         ]
       },
       stats: {
-        systems: [
-          ['Engines', 1],
-          ['Computers', 1],
-          ['Weapons', 1],
-          ['Structure', 1],
-          ['Sensors', 1],
-          ['Coms', 1],
-          ['Scale', 1],
-          ['Resistance', 1]
-        ],
-        departments: [
-          ['Command', 12],
-          ['Security', 12],
-          ['Science', 12],
-          ['Conn', 12],
-          ['Engineering', 12],
-          ['Medicine', 12],
-        ],
+        systems: {
+          engines: { value: 1, breaches: 2 },
+          computers: { value: 1, breaches: 2 },
+          weapons: { value: 1, breaches: 2 },
+          structure: { value: 1, breaches: 2 },
+          sensors: { value: 1, breaches: 2 },
+          coms: { value: 1, breaches: 2 }
+        },
+        departments: {
+          command: 12,
+          security: 12,
+          science: 12,
+          conn: 12,
+          engineering: 12,
+          medicine: 12
+        },
+        scale: 1,
+        resistance: 1,
         power: {
           current: 1,
           total: 1
@@ -70,13 +63,12 @@ class CharacterPlayUI extends Component {
         weapons: [],
         sheilds: [1,1,1,1,0,0,0,0]
       }
-    }
-
-    const character = {
+    },
+    character: {
       name: 'Carl Blands',
       player: 'Phil',
       rank: 'Capitan',
-      ship: ship.general.registry_entry.designation,
+      ship: '',
       stress: 9,
       determination: 1,
       attributes: [
@@ -114,8 +106,14 @@ class CharacterPlayUI extends Component {
         { name: 'Something something', description: 'Yada yada blah blah'},
       ]
     }
+  }
 
-   
+  handleChangeScreen = (screen) => {
+    this.setState({currentScreen: screen})
+  }
+
+  render() {
+    const { character, ship } = this.state
 
     let screen = (
       <CharacterInfo 
@@ -153,7 +151,8 @@ class CharacterPlayUI extends Component {
         <PlayUI 
           changeUI={this.handleChangeScreen} 
           active={this.state.currentScreen} 
-          character={character}>
+          character={character}
+          shipName={ship.general.registry_entry.designation}>
           {screen}
         </PlayUI>
       </Fragment>
