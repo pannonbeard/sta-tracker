@@ -24,23 +24,38 @@ class CharacterPlayUI extends Component {
           designation: 'USS - Excaliber NCC-1705',
           space_frame: 'Constitution',
           mission_profile: 'Multirole Explorer',
-          refits: []
+          refits: 3
         },
-        traits: [],
-        launch_bay: []
+        traits: [
+          'Trait 1',
+          'Trait 2',
+          'Trait 3'
+        ],
+        launch_bay: [
+          'Small Cargo Ship',
+          'Runabout',
+          'Angry Engineer'
+        ]
       },
       stats: {
-        systems: {
-          engines: 1,
-          computers: 1,
-          weapons: 1,
-          structure: 1,
-          sensors: 1,
-          coms: 1,
-          scale: 1,
-          resistance: 1
-        },
-        departments: {},
+        systems: [
+          ['Engines', 1],
+          ['Computers', 1],
+          ['Weapons', 1],
+          ['Structure', 1],
+          ['Sensors', 1],
+          ['Coms', 1],
+          ['Scale', 1],
+          ['Resistance', 1]
+        ],
+        departments: [
+          ['Command', 12],
+          ['Security', 12],
+          ['Science', 12],
+          ['Conn', 12],
+          ['Engineering', 12],
+          ['Medicine', 12],
+        ],
         power: {
           current: 1,
           total: 1
