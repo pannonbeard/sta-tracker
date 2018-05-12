@@ -1,0 +1,19 @@
+.IncrementField{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+  div{
+    padding-top: .2em;
+    border: solid black 1px;
+    text-align: center;
+    img {
+      height: 1em;
+    } 
+    &:first-child{
+      border-radius: 20px 0 0 20px;
+    }
+    &:last-child{
+      border-radius: 0 20px 20px 0;
+    }
+  }
+}
