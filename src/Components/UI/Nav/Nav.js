@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import bars from '../bars.svg'
+import bars from '../../../assets/bars.svg'
 import DrawerNav from './DrawerNav/DrawerNav'
 
 
@@ -30,6 +30,7 @@ class Nav extends Component {
         {/* sidebar */}
         <DrawerNav open={this.state.drawerOpen} clicked={this.closeDrawer}>
           <ul>
+            <li><Link to='/'>Home</Link></li>
             <li><Link to='/characters'>Characters</Link></li>
             <li><Link to='/campaigns'>Campaigns</Link></li>
             <li><Link to='/account'>Account</Link></li>

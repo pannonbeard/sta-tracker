@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Minus from '../minus.svg'
-import Plus from '../plus.svg'
+import Minus from '../../../assets/minus.svg'
+import Plus from '../../../assets/plus.svg'
 import styles from './IncrementField.scss'
 
 const incrementField = (props) => (
