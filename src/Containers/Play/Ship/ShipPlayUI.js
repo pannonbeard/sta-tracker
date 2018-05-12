@@ -16,7 +16,7 @@ class ShipPlayUI extends Component {
   }
 
   render() {
-    let screen = <ShipGeneral />
+    let screen = <ShipGeneral general={this.props.ship.general}/>
     console.log(this.props.ship)
 
     switch(this.state.currentScreen){
