@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './CharacterHeader.css'
 
 const characterHeader = (props) => {
-  const shipNameSize = props.character.ship.length > 10 
+  const shipNameSize = props.shipName.length > 10 
   ? { fontSize:  '.85em', paddingTop: '.65em' }
   : null 
   return (
@@ -18,7 +18,7 @@ const characterHeader = (props) => {
         </div>
       </div>
       <div className={styles.CharacterFooter}>
-        <div className={styles.ShipName} style={shipNameSize}>{props.character.ship}</div>
+        <div className={styles.ShipName} style={shipNameSize}>{props.shipName}</div>
         <div className={styles.CharacterRank}>{props.character.rank}</div>
       </div>
     </header>
