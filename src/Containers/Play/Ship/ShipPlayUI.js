@@ -17,16 +17,17 @@ class ShipPlayUI extends Component {
 
   render() {
     let screen = <ShipGeneral />
+    console.log(this.props.ship)
 
     switch(this.state.currentScreen){
       case 'talents':
-        screen = <ShipTalents />
+        screen = <ShipTalents talents={this.props.ship.talents}/>
         break
       case 'battle':
-        screen = <ShipBattle />
+        screen = <ShipBattle battle={this.props.ship.battle}/>
         break
       case 'stats':
-        screen = <ShipStats />
+        screen = <ShipStats stats={this.props.ship.stats}/>
         break
       default:
         screen = <ShipGeneral general={this.props.ship.general}/>
