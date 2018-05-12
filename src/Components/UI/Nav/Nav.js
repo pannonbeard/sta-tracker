@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import bars from '../bars.svg'
 import DrawerNav from './DrawerNav/DrawerNav'
+
 
 import styles from './Nav.css'
 
@@ -28,10 +30,10 @@ class Nav extends Component {
         {/* sidebar */}
         <DrawerNav open={this.state.drawerOpen} clicked={this.closeDrawer}>
           <ul>
-            <li>Characters</li>
-            <li>Campaigns</li>
-            <li>Account</li>
-            <li>Sign Out</li>
+            <li><Link to='/characters'>Characters</Link></li>
+            <li><Link to='/campaigns'>Campaigns</Link></li>
+            <li><Link to='/account'>Account</Link></li>
+            <li><Link to='/'>Sign Out</Link></li>
           </ul>
         </DrawerNav>
       </Fragment>
