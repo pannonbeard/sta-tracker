@@ -7,7 +7,7 @@ import styles from './PlayUI.scss'
 
 const playUi = (props) => (
   <Fragment>
-    <CharacterHeader />
+    <CharacterHeader character={props.character}/>
     <CharacterAbilityNav updateUI={props.changeUI} active={props.active}/>
     <main className={styles.PlayUI}>
       {props.children}
