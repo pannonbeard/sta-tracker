@@ -8,7 +8,7 @@ import ShipBattle from './ShipBattle/ShipBattle'
 
 class ShipPlayUI extends Component {
   state = {
-    currentScreen: 'general'
+    currentScreen: 'stats'
   }
 
   handleChangeScreen = (screen) => {
@@ -17,7 +17,6 @@ class ShipPlayUI extends Component {
 
   render() {
     let screen = <ShipGeneral general={this.props.ship.general}/>
-    console.log(this.props.ship)
 
     switch(this.state.currentScreen){
       case 'talents':
