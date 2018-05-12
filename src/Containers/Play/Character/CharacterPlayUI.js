@@ -17,7 +17,53 @@ class CharacterPlayUI extends Component {
   }
 
   render() {
+    const ship = {
+      general: {
+        registry_entry: {
+          service_date: '2280',
+          designation: 'USS - Excaliber NCC-1705',
+          space_frame: 'Constitution',
+          mission_profile: 'Multirole Explorer',
+          refits: []
+        },
+        traits: [],
+        launch_bay: []
+      },
+      stats: {
+        systems: {
+          engines: 1,
+          computers: 1,
+          weapons: 1,
+          structure: 1,
+          sensors: 1,
+          coms: 1,
+          scale: 1,
+          resistance: 1
+        },
+        departments: {},
+        power: {
+          current: 1,
+          total: 1
+        },
+        crew_support: {
+          current: 1,
+          total: 1
+        }
+      },
+      talents: [],
+      battle: {
+        weapons: [],
+        sheilds: [1,1,1,1,0,0,0,0]
+      }
+    }
+
     const character = {
+      name: 'Carl Blands',
+      player: 'Phil',
+      rank: 'Capitan',
+      ship: ship.general.registry_entry.designation,
+      stress: 9,
+      determination: 1,
       attributes: [
         ['Control', 12],
         ['Fitness', 12],
@@ -54,45 +100,7 @@ class CharacterPlayUI extends Component {
       ]
     }
 
-    const ship = {
-      general: {
-        registry_entry: {
-          service_date: '',
-          designation: '',
-          space_frame: '',
-          mission_profile: '',
-          refits: []
-        },
-        traits: [],
-        launch_bay: []
-      },
-      stats: {
-        systems: {
-          engines: 1,
-          computers: 1,
-          weapons: 1,
-          structure: 1,
-          sensors: 1,
-          coms: 1,
-          scale: 1,
-          resistance: 1
-        },
-        departments: {},
-        power: {
-          current: 1,
-          total: 1
-        },
-        crew_support: {
-          current: 1,
-          total: 1
-        }
-      },
-      talents: [],
-      battle: {
-        weapons: [],
-        sheilds: [1,1,1,1,0,0,0,0]
-      }
-    }
+   
 
     let screen = (
       <CharacterInfo 
@@ -127,7 +135,10 @@ class CharacterPlayUI extends Component {
 
     return (
       <Fragment> 
-        <PlayUI changeUI={this.handleChangeScreen} active={this.state.currentScreen}>
+        <PlayUI 
+          changeUI={this.handleChangeScreen} 
+          active={this.state.currentScreen} 
+          character={character}>
           {screen}
         </PlayUI>
       </Fragment>
