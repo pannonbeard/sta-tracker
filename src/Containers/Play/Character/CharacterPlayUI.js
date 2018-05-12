@@ -71,22 +71,22 @@ class CharacterPlayUI extends Component {
       ship: '',
       stress: 9,
       determination: 1,
-      attributes: [
-        ['Control', 12],
-        ['Fitness', 12],
-        ['Presence', 12],
-        ['Daring', 12],
-        ['Insite', 12],
-        ['Reason', 12],
-      ],
-      disciplines: [
-        ['Command', 12],
-        ['Security', 12],
-        ['Science', 12],
-        ['Conn', 12],
-        ['Engineering', 12],
-        ['Medicine', 12],
-      ],
+      attributes: {
+        control: 12,
+        fitness: 12,
+        presence: 12,
+        daring: 12,
+        insite: 12,
+        reason: 12
+      },
+      disciplines: {
+        command: 12,
+        security: 12,
+        science: 12,
+        conn: 12,
+        engineering: 12,
+        medicine: 12
+      },
       talents: [
         { name: 'First Talent', description: 'Does something cool' },
         { name: 'Second Talent', description: 'Does something else cool' },

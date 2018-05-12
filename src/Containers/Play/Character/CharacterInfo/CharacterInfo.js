@@ -4,18 +4,18 @@ import StatField from '../../../../Components/UI/StatField/StatField'
 import styles from './CharacterInfo.css' 
 
 const characterInfo = (props) => {
-  const mappedAttributes = props.attributes.map( attr => (
+  const mappedAttributes = Object.keys(props.attributes).map( key => (
       <StatField 
-        key={attr[0]} 
-        label={attr[0]} 
-        value={attr[1]} />
+        key={key} 
+        label={key.toUpperCase()} 
+        value={props.attributes[key]} />
     ))
 
-  const mappedDisciplines = props.disciplines.map( disc =>  (
+  const mappedDisciplines = Object.keys(props.disciplines).map( key =>  (
       <StatField 
-        key={disc[0]} 
-        label={disc[0]} 
-        value={disc[1]} />      
+        key={key} 
+        label={key.toUpperCase()} 
+        value={props.disciplines[key]} />      
     ))
 
   return(
