@@ -1,0 +1,41 @@
+.ShipStatsSystems, .ShipStatsDepartments{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 0 0.8em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ShipStatsResistanceScale{
+  margin: auto;
+  grid-column-end: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.Crew, .Power{
+  display: grid;
+  grid-template-columns: 1fr 70px 1fr;
+  grid-gap: 10px;
+}
+
+.BreachIndicators{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.BreachIndicator{
+  width: 10px;
+  height: 10px;
+  border: solid 1px black;
+  border-radius: 50%;
+  &.active{
+    background: rgba(0,0,0,0.5)
+  }
+}
+
