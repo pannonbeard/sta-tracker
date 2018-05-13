@@ -7,9 +7,11 @@ import CharacterTalents from './CharacterTalents/CharacterTalents'
 import PlayUI from '../../../Components/UI/PlayUI/PlayUI'
 import ShipPlayUI from '../Ship/ShipPlayUI'
 
+import axios from '../../../axios'
+
 class CharacterPlayUI extends Component {
   state = {
-    currentScreen: 'ship',
+    currentScreen: 'info',
     ship: {
       general: {
         registry_entry: {
@@ -107,6 +109,18 @@ class CharacterPlayUI extends Component {
       ]
     }
   }
+
+  componentDidMount(){
+    axios.get('/characters.json')
+      .then( response => {
+        let characters = []
+        Object.keys(response.data).map( key => {
+          characters.push( response.data[key] )
+        } )
+        return characters
+      })
+      .then( characters => this.setState({ character: characters[0] }))
+  } 
 
   handleChangeScreen = (screen) => {
     this.setState({currentScreen: screen})
