@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import styles from './Characters.scss'
 
-const characters = () => (
-  <div className={styles.Characters}>
-    <header>
-      <h1>Characters</h1>
-    </header>
-  </div>
-)
+class Characters extends Component{
 
-export default characters
+  componentWillMount(){
+    this.props.fetchCharacters()
+  }
+
+  render(){
+    console.log(this.props.characterList)
+    return(
+      <div className={styles.Characters}>
+        <header>
+          <h1>Characters</h1>
+        </header>
+        <main>
+          { this.props.characterList.map( character => (
+            <div key={character.id}>
+              {character.name}
+            </div>
+          ))}
+        </main>
+      </div>
+    )
+  }
+}
+
+export default Characters
