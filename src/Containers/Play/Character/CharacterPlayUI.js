@@ -8,8 +8,6 @@ import PlayUI from '../../../Components/UI/PlayUI/PlayUI'
 import ShipPlayUI from '../Ship/ShipPlayUI'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
 
-import axios from '../../../axios'
-
 class CharacterPlayUI extends Component {
   state = {
     currentScreen: 'info',
