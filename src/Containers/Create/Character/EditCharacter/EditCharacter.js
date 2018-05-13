@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 
 import CharacterForm from '../CharacterForm/CharacterForm'
+import { CharacterConsumer } from '../../../../Contexts/CharacterContext'
 import styles from './EditCharacter.scss'
 
-class EditCharacter extends Component{
+class EditCharacterPage extends Component{
   state = {
     character: {}
   }
 
   componentDidMount(){
-    const id = this.props.match.match.params.character_id
+    const id = this.props.match.params.character_id
     this.props.fetchCharacter(id)
       .then( response => response.data)
       .then( data => this.setState({ character: { id: id, ...data } }  ))
@@ -31,4 +32,12 @@ class EditCharacter extends Component{
   }
 }
 
-export default EditCharacter
+const editCharacter = (props) => (
+  <CharacterConsumer>
+    { ({getCharacter, updateCharacter}) => (
+      <EditCharacterPage {...props} update={updateCharacter} fetchCharacter={getCharacter}/>
+    )}
+  </CharacterConsumer>
+)
+
+export default editCharacter

@@ -25,13 +25,7 @@ class App extends Component {
                   <Route exact path='/' component={Home}/>
                   <Route exact path='/characters' component={Characters}/>
                   <Route exact path='/characters/new' component={NewCharacter} />
-                  <Route path='/characters/:character_id/edit' render={(match) => (
-                    <CharacterConsumer>
-                      {({getCharacter, updateCharacter}) => (
-                        <EditCharacter match={match} update={updateCharacter} fetchCharacter={getCharacter}/>
-                      )}
-                    </CharacterConsumer>                    
-                  )}/>
+                  <Route path='/characters/:character_id/edit' component={EditCharacter} />
                   <Route path='/characters/:character_id' render={(match) => (
                     <CharacterConsumer>
                       {({getCharacter}) => (
