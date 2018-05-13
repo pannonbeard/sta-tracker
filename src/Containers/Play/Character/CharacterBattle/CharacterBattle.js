@@ -13,12 +13,17 @@ const characterBattle = (props) => {
     </div>
   ))
 
-  const mappedInjuries = props.injuries.map( (injury, index) => (
-    <div className={styles.Injury} key={index}>
-      <ItemField label='Type' value={injury.type} />    
-      <ItemField label='Qualities' value={injury.qualities} />    
-    </div>
-  ))
+  let mappedInjuries = []
+
+  if(props.injuries){
+    mappedInjuries = props.injuries.map( (injury, index) => (
+      <div className={styles.Injury} key={index}>
+        <ItemField label='Type' value={injury.type} />    
+        <ItemField label='Qualities' value={injury.qualities} />    
+      </div>
+    ))
+  }
+  
 
   return (
     <div className={styles.CharacterBattle}>
