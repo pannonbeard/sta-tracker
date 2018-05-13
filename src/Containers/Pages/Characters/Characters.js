@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { CharacterConsumer } from '../../../Contexts/CharacterContext'
-
 import styles from './Characters.scss'
-
-
 
 class CharactersPage extends Component{
 

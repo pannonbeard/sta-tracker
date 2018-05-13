@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import CharacterBattle from './CharacterBattle/CharacterBattle'
 import CharacterEquipment from './CharacterEquipment/CharacterEquipment'
@@ -8,7 +8,9 @@ import PlayUI from '../../../Components/UI/PlayUI/PlayUI'
 import ShipPlayUI from '../Ship/ShipPlayUI'
 import Spinner from '../../../Components/UI/Spinner/Spinner'
 
-class CharacterPlayUI extends Component {
+import { CharacterConsumer } from '../../../Contexts/CharacterContext'
+
+class CharacterUI extends Component {
   state = {
     currentScreen: 'info',
     ship: {
@@ -69,7 +71,7 @@ class CharacterPlayUI extends Component {
   }
 
   componentDidMount(){
-    const id = this.props.match.match.params.character_id
+    const id = this.props.match.params.character_id
     this.props.fetchCharacter(id)
       .then( response => response.data)
       .then( data => this.setState({ character: { id: id, ...data } }  ))
@@ -118,17 +120,23 @@ class CharacterPlayUI extends Component {
     }
 
     return (
-      <Fragment> 
-        <PlayUI 
-          changeUI={this.handleChangeScreen} 
-          active={this.state.currentScreen} 
-          character={character}
-          shipName={ship.general.registry_entry.designation}>
-          {screen}
-        </PlayUI>
-      </Fragment>
+      <PlayUI 
+        changeUI={this.handleChangeScreen} 
+        active={this.state.currentScreen} 
+        character={character}
+        shipName={ship.general.registry_entry.designation}>
+        {screen}
+      </PlayUI>
     )
   }
 }
+
+const CharacterPlayUI = (props) => (
+  <CharacterConsumer>
+    {({getCharacter}) => (
+      <CharacterUI {...props} fetchCharacter={getCharacter} />
+    )}
+  </CharacterConsumer>
+)
 
 export default CharacterPlayUI
