@@ -6,6 +6,7 @@ import CharacterInfo from './CharacterInfo/CharacterInfo'
 import CharacterTalents from './CharacterTalents/CharacterTalents'
 import PlayUI from '../../../Components/UI/PlayUI/PlayUI'
 import ShipPlayUI from '../Ship/ShipPlayUI'
+import Spinner from '../../../Components/UI/Spinner/Spinner'
 
 import axios from '../../../axios'
 
@@ -66,60 +67,14 @@ class CharacterPlayUI extends Component {
         sheilds: [1,1,1,1,0,0,0,0]
       }
     },
-    character: {
-      name: 'Carl Blands',
-      player: 'Phil',
-      rank: 'Capitan',
-      ship: '',
-      stress: 9,
-      determination: 1,
-      attributes: {
-        control: 12,
-        fitness: 12,
-        presence: 12,
-        daring: 12,
-        insite: 12,
-        reason: 12
-      },
-      disciplines: {
-        command: 12,
-        security: 12,
-        science: 12,
-        conn: 12,
-        engineering: 12,
-        medicine: 12
-      },
-      talents: [
-        { name: 'First Talent', description: 'Does something cool' },
-        { name: 'Second Talent', description: 'Does something else cool' },
-        { name: 'Third Talent', description: 'Does something else cool' },
-        { name: 'Fourth Talent', description: 'Does something else cool' },
-      ],
-      weapons: [
-        { name_type: 'Phaser - blaster', action_dice: 3, qualities: 'great'},
-        { name_type: 'Phaser - blaster', action_dice: 3, qualities: 'great'}
-      ],
-      injuries: [
-        { type: 'broken leg', qualities: 'hard to walk moves half as fast'},
-        { type: 'broken leg', qualities: 'hard to walk moves half as fast'},
-      ],
-      equipment: [
-        { name: 'Something something', description: 'Yada yada blah blah'},
-        { name: 'Something something', description: 'Yada yada blah blah'},
-      ]
-    }
+    character: {}
   }
 
   componentDidMount(){
-    axios.get('/characters.json')
-      .then( response => {
-        let characters = []
-        Object.keys(response.data).map( key => {
-          characters.push( response.data[key] )
-        } )
-        return characters
-      })
-      .then( characters => this.setState({ character: characters[0] }))
+    const id = this.props.match.match.params.character_id
+    this.props.fetchCharacter(id)
+      .then( response => response.data)
+      .then( data => this.setState({ character: { id: id, ...data } }  ))
   } 
 
   handleChangeScreen = (screen) => {
@@ -158,6 +113,10 @@ class CharacterPlayUI extends Component {
             attributes={character.attributes} 
             disciplines={character.disciplines}/>
         )
+    }
+
+    if( !character.id ){
+      screen = <Spinner />
     }
 
     return (
