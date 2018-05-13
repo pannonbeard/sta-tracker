@@ -31,8 +31,7 @@ export class CharacterWrap extends Component{
       <CharacterProvider
      value={this.state}>
         {this.props.children}
-      </CharacterProvider
-    >
+      </CharacterProvider>
     )
   }
 }
