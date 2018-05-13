@@ -162,6 +162,7 @@ class NewCharacter extends Component{
             ))}
           </div>
           <button 
+            className={styles.Button}
             type='button' 
             onClick={() => this.addElement('talents', { name: '', description: ''})}>
             Add Talent
@@ -177,7 +178,8 @@ class NewCharacter extends Component{
                 remove={() => this.removeElement(equip.id, 'equipment')}/>
             ))}
           </div>
-          <button 
+          <button
+            className={styles.Button} 
             type='button' 
             onClick={() => this.addElement('equipment', { name: '', description: '' })}>
             Add Equipment
@@ -193,7 +195,8 @@ class NewCharacter extends Component{
                 remove={() => this.removeElement(weapon.id, 'weapons')}/>
             ))}
           </div>
-          <button 
+          <button
+            className={styles.Button} 
             type='button'
             onClick={() => this.addElement('weapons', { name_type: '', action_dice: 0, qualities: ''})}
           >Add Weapon</button>
@@ -208,12 +211,13 @@ class NewCharacter extends Component{
                 remove={() => this.removeElement(injury.id, 'injuries')}/>
             ))}
           </div>
-          <button 
+          <button
+            className={styles.Button} 
             type='button'
             onClick={() => this.addElement('injuries', { type: '', qualities: ''})}
           >Add Injury</button>
           <br />
-          <button type='submit'>Create Character</button>
+          <button type='submit' className={[styles.Button, styles.CreateButton].join(' ')} >Create Character</button>
         </form>
       </div>
     )
