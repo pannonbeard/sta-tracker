@@ -12,7 +12,7 @@ const home = () => (
       <h2><span>Characters</span></h2>
       <Link to='/characters/new' className={styles.createButton}>Create a New Character</Link>
       <h2><span>Campaigns</span></h2>
-      <a href='#' className={styles.createButton}>Create a New Campaign</a>
+      <a href='/' className={styles.createButton}>Create a New Campaign</a>
     </main>
   </div>
 )
