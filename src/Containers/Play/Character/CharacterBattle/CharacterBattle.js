@@ -5,13 +5,17 @@ import ItemField from '../../../../Components/UI/ItemField/ItemField'
 
 const characterBattle = (props) => {
 
-  const mappedWeapons = props.weapons.map( (weapon, index) => (
-    <div className={styles.weaponEntry} key={index}>
-      <ItemField label='Name/Type' value={weapon.name_type} />
-      <ItemField label='A' value={weapon.action_dice} />
-      <ItemField label='Qualities' value={weapon.qualities} extraClass={styles.spanTwoColumns}/>
-    </div>
-  ))
+  let mappedWeapons = []
+  if( props.weapons ){
+    mappedWeapons = props.weapons.map( (weapon, index) => (
+      <div className={styles.weaponEntry} key={index}>
+        <ItemField label='Name/Type' value={weapon.name_type} />
+        <ItemField label='A' value={weapon.action_dice} />
+        <ItemField label='Qualities' value={weapon.qualities} extraClass={styles.spanTwoColumns}/>
+      </div>
+    ))
+  }
+  
 
   let mappedInjuries = []
 
