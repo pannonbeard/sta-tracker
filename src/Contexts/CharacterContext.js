@@ -23,6 +23,12 @@ export class CharacterWrap extends Component{
     },
     getCharacter: (id) => {
       return axios.get(`/characters/${id}.json`)
+    },
+    updateCharacter: (data) => {
+      return axios.patch(`/characters/${data.id}.json`, data)
+    },
+    createCharacter: (data) => {
+      return axios.post(`/characters.json`, data)
     }
   }
 
