@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import { CharacterConsumer } from '../../../Contexts/CharacterContext'
+
 import styles from './Characters.scss'
 
-class Characters extends Component{
+
+
+class CharactersPage extends Component{
 
   componentWillMount(){
     this.props.fetchCharacters()
@@ -27,4 +31,15 @@ class Characters extends Component{
   }
 }
 
-export default Characters
+const characters = (props) =>(
+  <CharacterConsumer> 
+    { ({characters, getCharacters}) => (
+        <CharactersPage
+          {...props} 
+          characterList={characters} 
+          fetchCharacters={getCharacters}/> 
+      ) }
+  </CharacterConsumer> 
+)
+
+export default characters
