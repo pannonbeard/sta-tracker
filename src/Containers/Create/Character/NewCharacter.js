@@ -5,6 +5,8 @@ import NewCharacterEquipment from './NewCharacterEquipment/NewCharacterEquipment
 import NewCharacterWeapon from './NewCharacterWeapon/NewCharacterWeapon'
 import NewCharacterInjury from './NewCharacterInjury/NewCharacterInjury'
 
+import axios from '../../../axios'
+
 import styles from './NewCharacter.scss'
 
 class NewCharacter extends Component{
@@ -105,13 +107,21 @@ class NewCharacter extends Component{
     this.setState({ [propertyName]: updatedProps })
   }
 
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    const character = this.state
+    axios.post('/characters.json', character)
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
+  }
+
   render(){
     return(
       <div className={styles.NewCharacter}>
         <header>
           <h1><span>New Character</span></h1>
         </header>
-        <form onChange={this.handleChange}>
+        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
           <h2><span>General</span></h2>          
           <label>Name:</label>
           <input id='' type='text' name='name' defaultValue={this.state.name}/>
