@@ -5,6 +5,7 @@ import Layout from './Components/Layout/Layout'
 import CharacterPlayUI from './Containers/Play/Character/CharacterPlayUI'
 import Home from './Containers/Pages/Home/Home'
 import Characters from './Containers/Pages/Characters/Characters'
+import NewCharacter from './Containers/Create/Character/NewCharacter'
 import Campaigns from './Containers/Pages/Campaigns/Campaigns'
 import Account from './Containers/Pages/Account/Account'
 
@@ -19,7 +20,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/characters' component={Characters} />
-              <Route exact path='/characters/new' render={ () => <div>new characters</div> } />
+              <Route exact path='/characters/new' component={NewCharacter} />
               <Route path='/characters/:character_id' component={CharacterPlayUI}/>
               <Route path='/characters/:character_id/play' component={CharacterPlayUI}/>
               <Route exact path='/campaigns' component={Campaigns} />
