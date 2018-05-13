@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './Characters.scss'
 
@@ -9,7 +10,6 @@ class Characters extends Component{
   }
 
   render(){
-    console.log(this.props.characterList)
     return(
       <div className={styles.Characters}>
         <header>
@@ -18,7 +18,7 @@ class Characters extends Component{
         <main>
           { this.props.characterList.map( character => (
             <div key={character.id}>
-              {character.name}
+              <Link to={`/characters/${character.id}/play`}>{character.name}</Link>
             </div>
           ))}
         </main>
