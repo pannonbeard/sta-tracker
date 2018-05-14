@@ -73,9 +73,14 @@ class CharacterUI extends Component {
   componentDidMount(){
     const id = this.props.match.params.character_id
     this.props.fetchCharacter(id)
-      .then( response => response.data)
-      .then( data => this.setState({ character: { id: id, ...data } }  ))
   } 
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevProps.character !== this.props.character){
+      this.setState({ character: this.props.character })
+    }
+  }
+  
 
   handleChangeScreen = (screen) => {
     this.setState({currentScreen: screen})
@@ -83,7 +88,6 @@ class CharacterUI extends Component {
 
   render() {
     const { character, ship } = this.state
-
     let screen = (
       <CharacterInfo 
         attributes={character.attributes} 
@@ -133,8 +137,8 @@ class CharacterUI extends Component {
 
 const CharacterPlayUI = (props) => (
   <CharacterConsumer>
-    {({getCharacter}) => (
-      <CharacterUI {...props} fetchCharacter={getCharacter} />
+    {({getCharacter, currentCharacter}) => (
+      <CharacterUI {...props} character={currentCharacter} fetchCharacter={getCharacter} />
     )}
   </CharacterConsumer>
 )
