@@ -115,8 +115,13 @@ class CharacterForm extends Component{
   handleSubmit = (e) =>{
     e.preventDefault();
     const character = this.state
-    this.props.submit(character)
-      .then( res => this.props.history.push(`/characters/${res.data.name}/play`))
+    if(character.id){
+      this.props.submit(character)
+      this.props.history.push(`/characters/${character.id}/play`)
+    }else{
+      this.props.submit(character)
+      .then(res => this.props.history.push(`/characters/${res.key}/play`))
+    } 
   }
 
   render(){
