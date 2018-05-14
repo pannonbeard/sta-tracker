@@ -1,41 +1,50 @@
 import React, { Component } from 'react'
-import axios from '../axios'
+import firebase from '../firebase'
 
-export const CharacterContext = React.createContext({
-  characters: [],
-  getCharacters: () => {}
-})
+const CharacterContext = React.createContext()
 
 const CharacterProvider = CharacterContext.Provider
 export const CharacterConsumer = CharacterContext.Consumer
 
+const charactersRef = firebase.database().ref('characters')
+
 export class CharacterWrap extends Component{
   state = {
     characters: [],
+    currentCharacter: {},
     getCharacters: () => {
-      axios.get('/characters.json')
-        .then( response => response.data )
-        .then( data => {
-          let characters = []
-          Object.keys(data).map( key => characters.push({ id: key, ...data[key] }) )
-          this.setState({ characters })
-        })
+      charactersRef.on('value', (snapshot) => {
+        let characters = snapshot.val();
+        let newState = []
+        for(let character in characters){
+          newState.push({ id: character, ...characters[character] })
+        }
+        this.setState({ characters: newState })
+      })
     },
     getCharacter: (id) => {
-      return axios.get(`/characters/${id}.json`)
+      const characterRef = firebase.database().ref(`/characters/${id}`);
+      characterRef.on('value', (snapshot) => {
+        this.setState({ currentCharacter: { id: id, ...snapshot.val()} })
+      })
     },
     updateCharacter: (data) => {
-      return axios.patch(`/characters/${data.id}.json`, data)
+      const characterRef = firebase.database().ref(`/characters/${data.id}`)
+      return characterRef.set(data)
     },
     createCharacter: (data) => {
-      return axios.post(`/characters.json`, data)
+      return charactersRef.push(data)
+    },
+    deleteCharacter: (id) => {
+      const characterRef = firebase.database().ref(`/character/${id}`);
+      return characterRef.remove();
     }
   }
 
   render(){
     return(
       <CharacterProvider
-     value={this.state}>
+        value={this.state}>
         {this.props.children}
       </CharacterProvider>
     )
