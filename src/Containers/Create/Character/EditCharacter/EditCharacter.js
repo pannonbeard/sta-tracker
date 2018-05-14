@@ -12,8 +12,12 @@ class EditCharacterPage extends Component{
   componentDidMount(){
     const id = this.props.match.params.character_id
     this.props.fetchCharacter(id)
-      .then( response => response.data)
-      .then( data => this.setState({ character: { id: id, ...data } }  ))
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if(prevProps.character !== this.props.character){
+      this.setState({ character: this.props.character })
+    }
   }
 
   render(){
@@ -34,8 +38,12 @@ class EditCharacterPage extends Component{
 
 const editCharacter = (props) => (
   <CharacterConsumer>
-    { ({getCharacter, updateCharacter}) => (
-      <EditCharacterPage {...props} update={updateCharacter} fetchCharacter={getCharacter}/>
+    { ({getCharacter, updateCharacter, currentCharacter}) => (
+      <EditCharacterPage 
+        {...props} 
+        update={updateCharacter} 
+        fetchCharacter={getCharacter} 
+        character={currentCharacter}/>
     )}
   </CharacterConsumer>
 )
