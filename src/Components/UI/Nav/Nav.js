@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import bars from '../../../assets/bars.svg'
 import DrawerNav from './DrawerNav/DrawerNav'
 
-
 import styles from './Nav.css'
 
 class Nav extends Component {
@@ -34,7 +33,7 @@ class Nav extends Component {
             <li><Link to='/characters'>Characters</Link></li>
             <li><Link to='/campaigns'>Campaigns</Link></li>
             <li><Link to='/account'>Account</Link></li>
-            <li><Link to='/'>Sign Out</Link></li>
+            <li><Link to='/logout'>Sign Out</Link></li>
           </ul>
         </DrawerNav>
       </Fragment>
