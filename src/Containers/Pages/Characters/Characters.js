@@ -17,9 +17,15 @@ class CharactersPage extends Component{
           <h1>Characters</h1>
         </header>
         <main>
+        <Link to='/characters/new' className={styles.createButton}>Create a New Character</Link>
           { this.props.characterList.map( character => (
-            <div key={character.id}>
-              <Link to={`/characters/${character.id}/play`}>{character.name}</Link>
+            <div key={character.id} className={styles.Character}>
+              <div className={styles.Portrait}></div>
+              <h2>{character.name}</h2>
+              <div className={styles.PlayEdit}>
+                <Link to={`/characters/${character.id}/play`}>Play</Link>
+                <Link to={`/characters/${character.id}/edit`}>Edit</Link>
+              </div>
             </div>
           ))}
         </main>
