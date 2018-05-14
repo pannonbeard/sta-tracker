@@ -17,5 +17,10 @@
   padding: 1em;
   background: rebeccapurple;
   color: white;
-  box-shadow: 2px 1px #ccc;
+  box-shadow: 1px 2px 3px #ccc;
+  cursor: pointer;
+  border-radius: 2px;
+  &:hover, &:active{
+    background: lighten(rebeccapurple, 10%);
+  }
 }
