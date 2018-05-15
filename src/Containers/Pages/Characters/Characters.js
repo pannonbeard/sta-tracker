@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { CharacterConsumer } from '../../../Contexts/CharacterContext'
+import { UserConsumer } from '../../../Contexts/UserContext'
 import styles from './Characters.scss'
 
 class CharactersPage extends Component{
@@ -35,14 +36,18 @@ class CharactersPage extends Component{
 }
 
 const characters = (props) =>(
-  <CharacterConsumer> 
-    { ({characters, getCharacters}) => (
-        <CharactersPage
-          {...props} 
-          characterList={characters} 
-          fetchCharacters={getCharacters}/> 
-      ) }
-  </CharacterConsumer> 
+  <UserConsumer>
+    {({user}) => (
+      <CharacterConsumer> 
+        {({characters, getCharacters}) => (
+          <CharactersPage
+            {...props} 
+            characterList={characters} 
+            fetchCharacters={() => getCharacters(user.uid)}/> 
+        )}
+      </CharacterConsumer> 
+    )}
+  </UserConsumer>  
 )
 
 export default characters

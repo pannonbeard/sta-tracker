@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import CharacterForm from '../CharacterForm/CharacterForm'
 import { CharacterConsumer } from '../../../../Contexts/CharacterContext'
+import { UserConsumer } from '../../../../Contexts/UserContext'
 import styles from './EditCharacter.scss'
 
 class EditCharacterPage extends Component{
@@ -37,15 +38,21 @@ class EditCharacterPage extends Component{
 }
 
 const editCharacter = (props) => (
-  <CharacterConsumer>
-    { ({getCharacter, updateCharacter, currentCharacter}) => (
-      <EditCharacterPage 
-        {...props} 
-        update={updateCharacter} 
-        fetchCharacter={getCharacter} 
-        character={currentCharacter}/>
+  <UserConsumer>
+    {(user) => (
+      <CharacterConsumer>
+        { ({getCharacter, updateCharacter, currentCharacter}) => (
+          <EditCharacterPage 
+            {...props} 
+            update={updateCharacter} 
+            fetchCharacter={getCharacter} 
+            character={currentCharacter}
+            user={user.uid}/>
+        )}
+      </CharacterConsumer>
     )}
-  </CharacterConsumer>
+  
+  </UserConsumer>  
 )
 
 export default editCharacter

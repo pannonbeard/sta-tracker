@@ -6,14 +6,14 @@ const CharacterContext = React.createContext()
 const CharacterProvider = CharacterContext.Provider
 export const CharacterConsumer = CharacterContext.Consumer
 
-const charactersRef = firebase.database().ref('characters')
-
 export class CharacterWrap extends Component{
   state = {
     characters: [],
     currentCharacter: {},
-    getCharacters: () => {
+    getCharacters: (userId) => {
+      const charactersRef = firebase.database().ref('characters').orderByChild('user').equalTo(userId)
       charactersRef.on('value', (snapshot) => {
+        console.log(snapshot.val())
         let characters = snapshot.val();
         let newState = []
         for(let character in characters){
@@ -33,6 +33,7 @@ export class CharacterWrap extends Component{
       return characterRef.set(data)
     },
     createCharacter: (data) => {
+      const charactersRef = firebase.database().ref('characters')
       return charactersRef.push(data)
     },
     deleteCharacter: (id) => {

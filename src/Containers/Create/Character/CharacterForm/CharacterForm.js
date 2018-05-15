@@ -10,6 +10,7 @@ import styles from './CharacterForm.scss'
 
 class CharacterForm extends Component{
   state = {
+    user: '',
     name: '',
     rank: '',
     stress: 0,
@@ -45,6 +46,7 @@ class CharacterForm extends Component{
   }
 
   componentWillMount(){
+    this.setState({ user: this.props.user })
     if(this.props.character){
       this.setState({ ...this.props.character })
     }
@@ -227,5 +229,7 @@ class CharacterForm extends Component{
     )
   }
 }
+
+
 
 export default withRouter(CharacterForm)
