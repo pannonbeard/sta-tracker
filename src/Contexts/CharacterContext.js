@@ -13,7 +13,6 @@ export class CharacterWrap extends Component{
     getCharacters: (userId) => {
       const charactersRef = firebase.database().ref('characters').orderByChild('user').equalTo(userId)
       charactersRef.on('value', (snapshot) => {
-        console.log(snapshot.val())
         let characters = snapshot.val();
         let newState = []
         for(let character in characters){
