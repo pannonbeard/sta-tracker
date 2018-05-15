@@ -128,17 +128,20 @@ class CharacterForm extends Component{
 
   render(){
     return(
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <h2><span>General</span></h2>          
-        <label>Name:</label>
-        <input id='' type='text' name='name' defaultValue={this.state.name}/>
-        <br />
-        <label>Rank:</label>
-        <input type='text' name='rank' defaultValue={this.state.rank}/>
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit} className={styles.CharacterForm}>
+        <h2><span>General</span></h2>
+        <div className={styles.field}>
+          <label>NAME</label>
+          <input id='' type='text' name='name' defaultValue={this.state.name}/>
+        </div>          
+        <div className={styles.field}>
+          <label>RANK</label>
+          <input type='text' name='rank' defaultValue={this.state.rank}/>
+        </div>
         <h2><span>Attributes</span></h2>
         {Object.keys(this.state.attributes).map((key, index) => (
-          <div key={index}>
-            <label>{key}:</label>
+          <div key={index} className={styles.field}>
+            <label>{key.toUpperCase()}</label>
             <input 
               type='number' 
               name={`attributes[${key}]`} 
@@ -148,8 +151,8 @@ class CharacterForm extends Component{
         ))}
         <h2><span>Disciplines</span></h2>
         {Object.keys(this.state.disciplines).map((key, index) => (
-          <div key={index}>
-            <label>{key}:</label>
+          <div key={index} className={styles.field}>
+            <label>{key.toUpperCase()}</label>
             <input 
               type='number' 
               name={`disciplines[${key}]`} 
@@ -224,7 +227,10 @@ class CharacterForm extends Component{
           onClick={() => this.addElement('injuries', { type: '', qualities: ''})}
         >Add Injury</button>
         <br />
-        <button type='submit' className={[styles.Button, styles.CreateButton].join(' ')} >Create Character</button>
+        <button 
+          type='submit' 
+          className={[styles.Button, styles.CreateButton].join(' ')} 
+        > { this.props.character ? 'Update' : 'Create'}</button>
       </form>
     )
   }
